@@ -32,10 +32,10 @@ Desarrolle una **aplicación de gestión de cine** utilizando **Node.js** y **Ex
   - 📺 Nombre  
   - 🖼️ Imagen de portada  
   - 🎭 Género  
-  - 🔘 Botón “Ver Detalle” (título + reproductor de YouTube)  
+  - 🔘 Detalles (título + reproductor de YouTube)  
 - Filtros disponibles:
   - 🔍 Buscar por nombre.  
-  - 🎛️ Filtrar por género (select dinámico).
+  - 🎛️ Filtrar por género .
 
 ---
 
@@ -43,7 +43,6 @@ Desarrolle una **aplicación de gestión de cine** utilizando **Node.js** y **Ex
 - 📋 Listado con todas las series registradas.
 - ➕ **Crear nueva serie**:
   - Campos: nombre, imagen, video (YouTube) y género.
-  - Validaciones: todos los campos requeridos.
 - ✏️ **Editar serie** existente con datos precargados.
 - ❌ **Eliminar serie** con confirmación antes de borrar.
 - 🔁 Redirección automática al listado tras crear, editar o eliminar.
@@ -52,7 +51,7 @@ Desarrolle una **aplicación de gestión de cine** utilizando **Node.js** y **Ex
 
 ### 🎭 **Mantenimiento de Géneros**
 - 📋 Listado con todos los géneros.
-- ➕ **Crear género nuevo** (nombre requerido).
+- ➕ **Crear género nuevo**.
 - ✏️ **Editar género existente** con datos precargados.
 - ❌ **Eliminar género** con confirmación.
 - 🔁 Redirección automática tras cada acción.
