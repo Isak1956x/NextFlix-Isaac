@@ -17,7 +17,7 @@
 ---
 
 ## 🚀 Objetivo General
-Desarrollar una **aplicación de gestión de cine** utilizando **Node.js** y **Express.js**, implementando la arquitectura **MVC (Modelo-Vista-Controlador)** con **persistencia en archivos JSON** para el manejo de datos.
+Desarrolle una **aplicación de gestión de cine** utilizando **Node.js** y **Express.js**, implementando la arquitectura **MVC (Modelo-Vista-Controlador)** con **persistencia en archivos JSON** para el manejo de datos.
 
 ---
 
