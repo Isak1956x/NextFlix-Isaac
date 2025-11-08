@@ -1,0 +1,48 @@
+<div class="container">
+<div class="row">
+    <h1 class="text-center">Series List</h1>
+</div>
+<div class="row mt-2">
+    <div class="col-12 col-sm-4">
+        <a href="/series/create" class="btn btn-danger "><i class="bi bi-plus-circle"></i> Create New Serie </a>
+    </div>
+</div>
+
+        {{#if hasSeries}}
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-3 g-4">
+        {{#each seriesList}}
+        <div class="col">
+            <div class="card  bg-dark border-secondary shadow" >
+   <img  src={{this.imageUrl}} class="card-img-top" style="height: 275px; object-fit: cover;">  
+   <div class="card-body text-light">
+    <h5 class="card-title text-center">{{this.title}}</h5>
+    <span class="badge text-bg-danger d-flex justify-content-center">{{getGenreTitle ../genresList this.genre}}</span>
+    <div class="d-flex justify-content-center gap-2 mt-2">
+    <a href="/series/edit/{{this.id}}" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i> Edit</a>    
+    <form action="/series/delete" method="post">
+        <input type="hidden" value= {{this.id}} name="serieId">
+    <button class="btn btn-sm btn-danger delete-serie" type="submit"><i class="bi bi-trash"></i> Delete</button>
+    </form>
+      </div>
+      
+    </div>
+</div>
+        </div>
+     {{/each}}
+        {{else}}
+ 
+        <div class="row d-flex justify-content-center mt-3">
+            <div class="col-12 col-sm-4">
+                <div class="alert alert-info" role="alert">
+               <i class="bi bi-info-circle"></i>   There are not series registered
+                </div>
+            </div>
+        </div>
+
+     {{/if}} 
+</div>
+
+{{#section "scripts"}}
+<script src="/assets/js/site/series/index.js"></script>
+<script src="/assets/js/lib/bootstrap/bootstrap.min.js"></script>
+{{/section}}

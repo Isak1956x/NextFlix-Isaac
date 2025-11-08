@@ -1,0 +1,24 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-5">
+        <div class="card mt-5 border-0 shadow-lg bg-secondary text-light">
+            <div class="card-header bg-danger  text-center">
+           <h4>{{#if editMode}} Edit Genre: {{genre.genreTitle}} {{else}} Create New Genre {{/if}}</h4>
+            </div>
+        <div class="card-body">
+            <form action= "/generos/{{#if editMode}}edit {{else}}create {{/if}}" method="POST">
+                <div class="mb-3">
+                    <label for="genreName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="genreName" name="genreName" value="{{#if editMode}}{{genre.genreTitle}}{{else}}""{{/if}}" required>
+                </div>
+                {{#if editMode}}
+                <input type="hidden" name="genreId" value="{{genre.id}}">
+                {{/if}}
+                <div class="d-flex justify-content-center gap-3">
+                         <button type="submit" class="btn btn-primary">Save</button>
+                         <a class="btn btn-warning" href="/generos/index">Back</a>
+                </div>
+           
+            </form>
+        </div>
+    </div>
+</div>

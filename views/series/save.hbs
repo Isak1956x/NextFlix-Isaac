@@ -1,0 +1,53 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-5">
+        {{#if hasGenres}}
+        <div class="card mt-5 border-0 shadow-lg bg-secondary text-light">
+            <div class="card-header bg-danger  text-center">
+           <h4>{{#if editMode}} Edit Serie: {{serie.title}} {{else}} Create New Serie {{/if}}</h4>
+            </div>
+        <div class="card-body">
+            <form action= "/series/{{#if editMode}}edit {{else}}create {{/if}}" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{#if editMode}}{{serie.title}}{{else}}""{{/if}}" required="required" >
+                </div>
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">Image</label>
+                   <input type="text" name="imageUrl" id="image" class="form-control" required="required"  value="{{#if editMode}}{{serie.imageUrl}}{{else}}""{{/if}}">
+                </div>
+                <div class="mb-3">
+                    <label for="youtubeUrl" class="form-label">Youtube link</label>
+                    <input type="text" class="form-control" name="youtubeUrl" required="required" value="{{#if editMode}}{{serie.youtubeUrl}}{{else}}""{{/if}}"> 
+                </div>
+                <div class="mb-3">
+                    <label for="genero" class="form-label">Genero</label>
+                   <select name="genero" class="form-select" value="{{#if editMode}}{{serie.genre}}{{else}}""{{/if}}" required="required" >
+                    {{#each genresList}}
+                    <option value="{{this.id}}">{{this.genreTitle}}</option>
+                    {{/each}}
+                   </select>
+                </div>
+                {{#if editMode}}
+                <input type="hidden" name="serieId" value="{{serie.id}}">
+                {{/if}}
+                <div class="d-flex justify-content-center gap-3">
+                         <button type="submit" class="btn btn-primary">Save</button>
+                         <a class="btn btn-warning" href="/series/index">Back</a>
+                </div>
+           
+            </form>
+        </div>
+       </div>
+    {{else}}
+    <div class="d-flex flex-column justify-content-center align-items-center text-center vh-100">
+  <div class="alert alert-info w-75 w-sm-50" role="alert">
+    <i class="bi bi-info-circle display-5 d-block mb-3"></i>
+    <h4 class="alert-heading mb-2">There are no genres registered</h4>
+    <p class="mb-4">Please add one to get started.</p>
+    <a href="/generos/create" class="btn btn-primary">
+      <i class="bi bi-plus-circle"></i> Create Genre
+    </a>
+  </div>
+</div>
+    {{/if}}
+</div>

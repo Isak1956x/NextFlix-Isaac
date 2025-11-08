@@ -1,0 +1,110 @@
+<div class="container">
+     {{#if hasSeries}}
+<div class="container-fluid px-0 mt-2 mb-3">
+  <div id="seriesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="false">
+  <div class="carousel-inner">
+    {{#each seriesList}}
+      <div class="carousel-item {{#if @first}}active{{/if}}">
+        <img src="{{this.imageUrl}}" class="d-block w-100" alt="{{this.title}}" style="height:250px;object-fit:cover;filter:brightness(70%);">
+        <div class="carousel-caption text-start">
+           <h5 class="fw-bold">{{this.title}}</h5>
+          <p>{{getGenreTitle ../genresList this.genre}}</p>
+          <a href="series/details/{{this.id}}" class="btn btn-danger btn-sm">Ver ahora</a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col d-flex">
+        <div class="me-2 w-75">
+            <form action="/series/search" method="get" class="d-flex">
+  <input class="form-control" type="text" name="serieTitle" placeholder="Search serie by name" required="required">
+  <button class="btn btn-danger ms-2" type="submit">
+    <i class="bi bi-search"></i>
+    </button>
+        </form>
+        </div>
+        <div class="w-25">
+         <form action="/series/filter" method="get" class="d-flex">
+    <select name="genreId" class="form-select" {{#if hasGenres}}{{else}}disabled{{/if}}>
+      {{#if hasGenres}}
+      <option value="">Filter by genre</option>
+        {{#each genresList}}
+          <option value="{{this.id}}">{{this.genreTitle}}</option>
+        {{/each}}
+      {{else}}
+        <option value="">No Genres found</option>
+      {{/if}}
+    </select>
+    <button class="btn btn-danger ms-2" {{#if hasGenres}}{{else}}disabled{{/if}} type="submit">
+      <i class="bi bi-filter"></i>
+    </button>
+  </form>
+    </div>
+</div>       
+ {{#if filterMode}}
+     {{#if filteredList}}
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-0 g-4">
+        
+        {{#each filteredList}}
+        <div class="col">
+            <a href="details/{{this.id}}" class="text-decoration-none">
+            <div class="card bg  border-secondary shadow-lg bg-dark" >
+   <img  src={{this.imageUrl}} class="card-img-top" style="height: 275px; object-fit: cover;">  
+   <div class="card-body text-light">
+    <h5 class="card-title text-center">{{this.title}}</h5>
+    <span class="badge text-bg-danger d-flex justify-content-center">{{getGenreTitle ../genresList this.genre}}</span>
+      
+    </div>
+</div>
+</a>
+        </div>
+                
+     {{/each}}
+        {{else}}
+     <div class="d-flex justify-content-center mt-5" >
+      <div class="text-center text-light">
+        <i class="bi bi-search display-3 text-danger"></i>
+        <h4 class="mt-3">Serie Not Found</h4>
+      </div>
+    </div>
+        {{/if}}
+
+     {{else}}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-0 g-4">
+       {{#each seriesList}}
+        <div class="col">
+            <a href="series/details/{{this.id}}" class="text-decoration-none">
+            <div class="card bg  border-secondary shadow-lg bg-dark" >
+   <img  src={{this.imageUrl}} class="card-img-top" style="height: 275px; object-fit: cover;">  
+   <div class="card-body text-light">
+    <h5 class="card-title text-center">{{this.title}}</h5>
+    <span class="badge text-bg-danger d-flex justify-content-center">{{getGenreTitle ../genresList this.genre}}</span>
+      
+    </div>
+</div>
+</a>
+        </div>
+        
+     {{/each}}
+     {{/if}}
+    {{else}}
+ 
+        <div class="row d-flex justify-content-center mt-3">
+            <div class="col-12 col-sm-4">
+                <div class="alert alert-info" role="alert">
+               <i class="bi bi-info-circle"></i>   There are not series registered
+                </div>
+            </div>
+        </div>
+
+     {{/if}} 
+</div>
+
+{{#section "scripts"}}
+<script src="/assets/js/site/series/index.js"></script>
+<script src="/assets/js/lib/bootstrap/bootstrap.min.js"></script>
+{{/section}}
