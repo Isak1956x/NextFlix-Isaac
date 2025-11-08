@@ -1,7 +1,4 @@
 <img width="1729" height="855" alt="image" src="https://github.com/user-attachments/assets/7a10a49b-0d7d-408e-84a0-cd3ccdc8e7e2" />
-<p align="center">
-  <img src="https://i.imgur.com/f3xWv9u.png" alt="NextFlix Banner" width="100%">
-</p>
 
 <h1 align="center">🎬 NextFlix — App de Gestión de Cine</h1>
 
